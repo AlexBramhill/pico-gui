@@ -4,5 +4,6 @@ from classes import Point
 
 display = PicoDisplay()
 display.set_backlight_percentage(0.5)
-display.write_text(Point(30, 30), 'hello world')
+display_cell = display.get_cell()
+display.write_text_in_cell(display_cell, 'hello world')
 display.update()

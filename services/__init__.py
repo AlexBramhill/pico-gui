@@ -1,1 +1,1 @@
-from .displays import PicoDisplay
+from .displays import PicoDisplay, AbstractDisplay
