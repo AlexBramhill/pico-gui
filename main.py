@@ -1,11 +1,8 @@
-from picographics import PicoGraphics, DISPLAY_PICO_DISPLAY
+from services import PicoDisplay
+from classes import Point
 # set up the display and drawing constants
 
-display = PicoGraphics(display=DISPLAY_PICO_DISPLAY, rotate=90)
-display.set_backlight(0.5)
-pen = display.create_pen(255, 255, 255)
-font = 'bitmap8'
-display.set_pen(pen)
-display.set_font(font)
-display.text('hello world', 0, 0, 0, 2)
+display = PicoDisplay()
+display.set_backlight_percentage(0.5)
+display.write_text(Point(30, 30), 'hello world')
 display.update()
