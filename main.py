@@ -1,6 +1,5 @@
 from services import PicoDisplay
-from classes import Point, Rgb, SetFillInCellProps, SetTextInCellProps
-# set up the display and drawing constants
+from classes import Rgb, SetFillInCellProps, SetTextInCellProps
 
 display = PicoDisplay()
 display.set_backlight_percentage(0.5)
