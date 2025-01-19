@@ -1,7 +1,7 @@
 from picographics import PicoGraphics, DISPLAY_PICO_DISPLAY
 from .abstract_display import AbstractDisplay
 import errors
-from classes import Point, Rgb, Cell, Range
+from classes import Point, Rgb, Cell, Range, SetTextInCellProps, SetFillInCellProps
 
 
 class PicoDisplay(AbstractDisplay):
@@ -30,12 +30,19 @@ class PicoDisplay(AbstractDisplay):
 
     def get_cell(self):
         width, height = self.__display.get_bounds()
-        return Cell(Range(0, width), Range(0, height))
+        return Cell(Range(0, width), Range(0, height), self.__set_text_in_cell, self.__set_fill_in_cell)
 
-    def write_text_in_cell(self, cell: Cell, text: str, size: float | int = 2, colour: Rgb = Rgb(255, 255, 255), font='bitmap8'):
+    def __set_text_in_cell(self, cell: Cell, props: SetTextInCellProps):
+        text = props.text if props.text is not None else ""
+        size = props.size if props.size is not None else 2
+        colour = props.colour
+        font = props.font if props.font is not None else 'bitmap8'
+
         self.__write_text(point=cell.top_left_point, text=text,
                           size=size, word_wrap=cell.width, colour=colour, font=font)
 
-    def colour_cell(self, cell: Cell, colour: Rgb = Rgb(0, 0, 0)):
+    def __set_fill_in_cell(self, cell: Cell, props: SetFillInCellProps):
+        colour = props.colour
+
         self.__draw_rectangle(cell.top_left_point,
                               cell.width, cell.height, colour)
