@@ -1,4 +1,5 @@
-from classes import SetTextInCellProps, SetFillInCellProps, Cell
+from props import SetTextInCellProps, SetFillInCellProps
+from classes import Cell
 
 
 class AbstractDisplay:

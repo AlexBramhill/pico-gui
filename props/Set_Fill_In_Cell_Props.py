@@ -1,4 +1,4 @@
-from .Rgb import Rgb
+from classes import Rgb
 
 
 class SetFillInCellProps ():

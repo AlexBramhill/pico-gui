@@ -1,7 +1,7 @@
 from .Range import Range
 from .Point import Point
-from .Set_Text_In_Cell_Props import SetTextInCellProps
-from .Set_Fill_In_Cell_Props import SetFillInCellProps
+import props
+import controllers
 
 
 class Cell:
@@ -23,10 +23,12 @@ class Cell:
         self.width = self.right_bounds - self.left_bounds
         self.height = self.bottom_bounds - self.top_bounds
 
-        self.__text = set_text
-        self.__fill = set_fill
+        def __create_child_cell(x_display_range: Range, y_display_range: Range):
+            return Cell(x_display_range, y_display_range, set_text, set_fill)
 
-        def __set_text(props: SetTextInCellProps):
+        self.__create_child_cell = __create_child_cell
+
+        def __set_text(props: props.SetTextInCellProps):
             """
             Sets the text in the cell. Note -- This may require the display to be updated to be visible.
             """
@@ -34,10 +36,21 @@ class Cell:
 
         self.set_text = __set_text
 
-        def __set_fill(props: SetFillInCellProps):
+        def __set_fill(props: props.SetFillInCellProps):
             """
             Sets the fill in the cell. Note -- This may require the display to be updated to be visible.
             """
             return set_fill(self, props)
 
         self.set_fill = __set_fill
+
+        def __get_grid():
+            raise NotImplementedError(
+                'Grid must be created prior to getting the grid.')
+        self.get_grid = __get_grid
+
+    def create_grid(self, spacing_type, x_spacing_values, y_spacing_values, margin):
+        gridProps = props.GridProps(spacing_type=spacing_type,
+                                    x_spacing_values=x_spacing_values, y_spacing_values=y_spacing_values, margin=margin)
+        return controllers.Grid.create_cells(
+            parent_cell=self, create_child_cell=self.__create_child_cell, props=gridProps)

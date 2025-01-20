@@ -1,7 +1,8 @@
 from picographics import PicoGraphics, DISPLAY_PICO_DISPLAY
 from .abstract_display import AbstractDisplay
 import errors
-from classes import Point, Rgb, Cell, Range, SetTextInCellProps, SetFillInCellProps
+from classes import Point, Rgb, Cell, Range
+from props import SetTextInCellProps, SetFillInCellProps
 
 
 class PicoDisplay(AbstractDisplay):
