@@ -1,8 +1,10 @@
 # pico-gui
 
-A micropython pico gui for use with the pico display from pimoroni
+An in development micropython gui for use with a variety of displays
 
 # Working setup
+
+Currently developing on:
 
 - [Pico 2w](https://thepihut.com/products/raspberry-pi-pico-2-w)
 - [Pico display](https://thepihut.com/products/pico-display-pack)
@@ -10,30 +12,9 @@ A micropython pico gui for use with the pico display from pimoroni
 
 # Introduction
 
-This library provides an easy to use grid structure for basic layout when using a raspberry pi pico and the pico display. The library uses `cells` as the main building block for a simple gui. Each `cell` can then easily be coloured and have text written in (with wrap automatically calculated).
+This library provides an easy to use grid structure for basic layout when using micro controllers and a display. The library uses `cells` as the main building block for a simple gui.
 
-# Getting started
-
-## Updating dependency injection
-
-- Create a display service for your display extending `abstract_display.py` as a base
-- Override all methods to your display's specific implementation
-- Update the dependency injection to utilise your newly created display service
-
-## Working with the display
-
-To get started with the gui, instantiate the display
-
-```python
-display = PicoDisplay() # Replace with the custom display service if using a custom display service
-```
-
-The display object allows for the control of display-wide functions such as backlight and updating the screen. At the moment, no soft updates are supported so it is suggested that a hard update is always used for eink screens.
-
-```python
-display.set_backlight_percentage(0.5) # Example of updating the backlight
-display.update() # Example of updating the screen
-```
+The work in progress goal of this project is to create an easy to use and assemble gui for specifically a pico 2w and display, including interaction via buttons.
 
 ## Grids and cells
 
