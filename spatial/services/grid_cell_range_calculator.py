@@ -1,5 +1,5 @@
-from classes import Cell, Range
-from props import GridProps
+from spatial.classes import Cell, Range
+from spatial.props import GridProps
 from math import ceil, floor
 
 
@@ -11,6 +11,9 @@ class GridCellRangeCalculator:
         start_bounds = parent_cell.left_bounds if is_x_spacing_values else parent_cell.top_bounds
         length = parent_cell.width if is_x_spacing_values else parent_cell.height
 
+        print(f'values: {values}, start_bounds: {
+              start_bounds}, length: {length}'
+              )
         sorted_values = sorted(values)
 
         if sorted_values[0] != 0:
@@ -31,9 +34,9 @@ class GridCellRangeCalculator:
     @staticmethod
     def __adjustRangesForMargin(ranges: list[Range], props: GridProps) -> list[Range]:
         adjusted_ranges = []
-        print('adjusting ranges')
-        print(f'margin: {props.margin}')
-        [print(f'range: {range}') for range in ranges]
+        # print('adjusting ranges')
+        # print(f'margin: {props.margin}')
+        # [print(f'range: {range}') for range in ranges]
 
         def reduce_range_by_margin_at_front(range: Range, margin_multiplier: float):
             return Range(
@@ -63,7 +66,7 @@ class GridCellRangeCalculator:
 
             adjusted_ranges.append(current_range)
 
-        [print(f'adjusted range: {range}') for range in adjusted_ranges]
+        # [print(f'adjusted range: {range}') for range in adjusted_ranges]
         return adjusted_ranges
 
     @staticmethod
@@ -73,7 +76,9 @@ class GridCellRangeCalculator:
                 f"Cannot create cells for display grid. Unsupported division type: {
                     props.spacing_type}"
             )
-
+        print(f'{props.spacing_type, props.x_spacing_values,
+              props.y_spacing_values}'
+              )
         x_cell_ranges = GridCellRangeCalculator.__get_cell_ranges(
             'x', props, parent_cell)
         y_cell_ranges = GridCellRangeCalculator.__get_cell_ranges(

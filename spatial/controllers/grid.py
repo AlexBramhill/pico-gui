@@ -18,7 +18,7 @@ class Grid:
     @staticmethod
     def create_cell_grid_in_cell(parent_cell: Cell, props: GridProps):
         absolute_summation_spacing_grid_props = GridSpacingConverter.convert_spacing_type(
-            target='absolute_summation', parent_cell=parent_cell, props=props
+            target_spacing_type='absolute_summation', parent_cell=parent_cell, props=props
         )
 
         x_cell_ranges, y_cell_ranges = GridCellRangeCalculator.compute_grid_ranges(

@@ -1,4 +1,4 @@
-from consts import SpacingTypeArray
+from spatial.consts import SpacingTypeArray
 
 
 class GridProps:

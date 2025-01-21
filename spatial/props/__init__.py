@@ -1,1 +1,1 @@
-from Grid_Props import GridProps
+from .Grid_Props import GridProps

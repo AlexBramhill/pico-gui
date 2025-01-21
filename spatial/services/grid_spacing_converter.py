@@ -1,6 +1,6 @@
-from classes import Cell
-from consts import SpacingType
-from props import GridProps
+from spatial.classes import Cell
+from spatial.consts import SpacingType
+from spatial.props import GridProps
 
 
 class GridSpacingConverter:
@@ -22,19 +22,19 @@ class GridSpacingConverter:
         is_x = axis == 'x'
         length = parent_cell.width if is_x else parent_cell.height
         values = props.x_spacing_values if is_x else props.y_spacing_values
-
+        print(f'values: {values}, length: {length}')
         return [round(length * value) for value in values]
 
     @staticmethod
-    def convert_spacing_type(target: str, parent_cell: Cell, props: GridProps):
+    def convert_spacing_type(target_spacing_type: str, parent_cell: Cell, props: GridProps):
         current_spacing_type = props.spacing_type
 
-        if current_spacing_type == target:
+        if current_spacing_type == target_spacing_type:
             return props
 
-        if target != SpacingType.ABSOLUTE_SUMMATION:
+        if target_spacing_type != SpacingType.ABSOLUTE_SUMMATION:
             raise NotImplementedError(
-                f"Unsupported target division type: {target}")
+                f"Unsupported target division type: {target_spacing_type}")
 
         if current_spacing_type == SpacingType.PERCENTAGE:
             # The below is a two-step process and should be reduced to
@@ -59,7 +59,7 @@ class GridSpacingConverter:
                 'y', parent_cell, props)
 
             return GridProps(
-                spacing_type=target,
+                spacing_type=target_spacing_type,
                 x_spacing_values=new_x_spacing_values,
                 y_spacing_values=new_y_spacing_values,
                 margin=props.margin
@@ -72,11 +72,11 @@ class GridSpacingConverter:
                 'y', props)
 
             return GridProps(
-                spacing_type=target,
+                spacing_type=target_spacing_type,
                 x_spacing_values=new_x_spacing_values,
                 y_spacing_values=new_y_spacing_values,
                 margin=props.margin
             )
 
         raise NotImplementedError(
-            f"Unsupported target division type: {target}")
+            f"Unsupported target division type: {target_spacing_type}")
