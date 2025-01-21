@@ -1,8 +1,7 @@
 from spatial.classes import Cell, Range
 
 
-class CellCreation:
-
+class CellCreator:
     @staticmethod
     def create_cell_from_range(x_display_range: Range, y_display_range: Range):
         return Cell(

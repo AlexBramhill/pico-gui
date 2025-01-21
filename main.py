@@ -5,7 +5,7 @@ from spatial import *
 display = PicoGraphics(display=DISPLAY_PICO_DISPLAY, rotate=90)
 width, height = display.get_bounds()
 
-display_cell = CellCreation.create_cell_from_display_dimensions(
+display_cell = CellCreator.create_cell_from_display_dimensions(
     width, height)
 
 white = display.create_pen(255, 255, 255)

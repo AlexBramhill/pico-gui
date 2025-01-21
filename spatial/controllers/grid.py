@@ -1,6 +1,6 @@
 from spatial.classes import Cell
 from spatial.props import GridProps
-from spatial.services import GridCellRangeCalculator, GridSpacingConverter, CellCreation
+from spatial.services import GridCellRangeCalculator, GridSpacingConverter, CellCreator
 
 
 class Grid:
@@ -25,6 +25,6 @@ class Grid:
             props=absolute_summation_spacing_grid_props, parent_cell=parent_cell
         )
 
-        return CellCreation.create_cell_grid_from_ranges(
+        return CellCreator.create_cell_grid_from_ranges(
             x_ranges=x_cell_ranges, y_ranges=y_cell_ranges
         )
