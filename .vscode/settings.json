@@ -13,5 +13,6 @@
   "python.analysis.extraPaths": [
     "~/.micropico-stubs/micropython-rp2-rpi_pico_w-stubs==1.23.0.post2",
     "~/.micropico-stubs/included"
-  ]
+  ],
+  "cSpell.words": ["uasyncio"]
 }
