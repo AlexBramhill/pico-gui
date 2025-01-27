@@ -27,6 +27,6 @@ for row in subgrid:
 is_on_battery = BatteryStatus.is_on_battery()
 display.set_pen(white)
 display.text(f"Hello, World! \n{BatteryStatus.get_battery_percentage() if is_on_battery else 'N/A'}%, \n{BatteryStatus.get_voltage() if is_on_battery else 'N/A'}V\n"
-             f"{'on battery' if is_on_battery else 'charging'}", 10, 10, scale=1)
+             f"{'discharging' if is_on_battery else 'charging'}", 10, 10, scale=1)
 display.set_update_speed(0)
 display.update()

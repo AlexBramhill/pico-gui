@@ -52,7 +52,7 @@ class BatteryStatus:
     @staticmethod
     def get_voltage():
         if BatteryStatus.is_charging():
-            raise IncorrectStateError("Charging", "Not Charging")
+            raise IncorrectStateError("charging", "discharging")
         return round(BatteryStatus.__get_voltage(), 2)
 
     @staticmethod
