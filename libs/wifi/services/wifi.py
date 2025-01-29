@@ -1,7 +1,7 @@
 import network
 from time import sleep
 import secrets
-from wifi.errors import FailedToConnectError
+from libs.wifi.errors import FailedToConnectError
 
 
 class Wifi:

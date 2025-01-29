@@ -1,7 +1,7 @@
 
 from picographics import PicoGraphics, DISPLAY_INKY_PACK, PEN_1BIT
-from spatial import *
-from battery import BatteryStatus
+from libs.spatial import *
+from libs.battery import BatteryStatus
 
 display = PicoGraphics(display=DISPLAY_INKY_PACK, pen_type=PEN_1BIT)
 width, height = display.get_bounds()

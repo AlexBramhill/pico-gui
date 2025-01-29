@@ -1,6 +1,6 @@
 from machine import ADC, Pin
-from battery.errors import LowVoltageError, IncorrectStateError
-from wifi import Wifi
+from libs.battery.errors import LowVoltageError, IncorrectStateError
+from libs.wifi import Wifi
 """
 Modified version of the battery_pico.py file from
 https://github.com/pimoroni/pimoroni-pico/blob/main/micropython/examples/pico_lipo_shim/battery_pico.py.
