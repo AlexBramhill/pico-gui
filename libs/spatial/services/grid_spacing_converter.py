@@ -1,6 +1,6 @@
-from spatial.classes import Cell
-from spatial.consts import SpacingType
-from spatial.props import GridProps
+from libs.spatial.classes import Cell
+from libs.spatial.consts import SpacingType
+from libs.spatial.props import GridProps
 
 
 class GridSpacingConverter:

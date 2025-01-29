@@ -1,6 +1,6 @@
-from spatial.classes import Cell
-from spatial.props import GridProps
-from spatial.services import GridCellRangeCalculator, GridSpacingConverter, CellCreator
+from libs.spatial.classes import Cell
+from libs.spatial.props import GridProps
+from libs.spatial.services import GridCellRangeCalculator, GridSpacingConverter, CellCreator
 
 
 class Grid:

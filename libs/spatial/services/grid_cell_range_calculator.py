@@ -1,5 +1,5 @@
-from spatial.classes import Cell, Range
-from spatial.props import GridProps
+from libs.spatial.classes import Cell, Range
+from libs.spatial.props import GridProps
 from math import ceil, floor
 
 

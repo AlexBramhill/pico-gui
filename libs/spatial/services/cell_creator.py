@@ -1,4 +1,4 @@
-from spatial.classes import Cell, Range
+from libs.spatial.classes import Cell, Range
 
 
 class CellCreator:
