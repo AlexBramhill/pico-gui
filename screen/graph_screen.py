@@ -242,38 +242,40 @@ class GraphScreen ():
 
         historical_data = []
 
-        # while True:
-        try:
-            time = GraphScreenData.get_time_from_api()
-            GraphScreenData.set_time(time)
-            # This needs improving to avoid microsecond misreporting
-            time_now = GraphScreenData.get_time()
+        while True:
 
-            if (first_sync_time == "No sync yet"):
-                first_sync_time = time_now
-            last_sync_time = time_now
+            try:
+                time = GraphScreenData.get_time_from_api()
+                GraphScreenData.set_time(time)
+                # This needs improving to avoid microsecond misreporting
+                time_now = GraphScreenData.get_time()
 
-        except Exception as e:
-            print(e)
-            sys.print_exception(e)  # type: ignore
+                if (first_sync_time == "No sync yet"):
+                    first_sync_time = time_now
+                last_sync_time = time_now
 
-            failed_time_update_count += 1
+            except Exception as e:
+                print(e)
+                sys.print_exception(e)  # type: ignore
 
-        finally:
-            iteration_count += 1
+                failed_time_update_count += 1
 
-            data_props = GraphScreenData.get_data()
-            data_props["failed_time_update_count"] = failed_time_update_count
-            data_props["first_sync_time"] = first_sync_time
-            data_props["last_sync_time"] = last_sync_time
-            historical_data.append({
-                'time': time_now,
-                'iteration_count': iteration_count,
-                'voltage': data_props['voltage'],
-                'battery_percentage': data_props['battery_percentage'],
-                'is_on_battery': data_props['is_on_battery']
-            })
+            finally:
+                iteration_count += 1
 
-            data_props['historical_data'] = historical_data
+                data_props = GraphScreenData.get_data()
+                data_props["failed_time_update_count"] = failed_time_update_count
+                data_props["first_sync_time"] = first_sync_time
+                data_props["last_sync_time"] = last_sync_time
+                historical_data.append({
+                    'time': time_now,
+                    'iteration_count': iteration_count,
+                    'voltage': data_props['voltage'],
+                    'battery_percentage': data_props['battery_percentage'],
+                    'is_on_battery': data_props['is_on_battery']
+                })
 
-            GraphScreen.render(data_props)
+                data_props['historical_data'] = historical_data
+
+                GraphScreen.render(data_props)
+                sleep(60)
